@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'djangocms_googlemap',
     'djangocms_snippet',
     'djangocms_style',
+    'polls',
 ]
 
 MIDDLEWARE = [
@@ -168,5 +169,13 @@ THUMBNAIL_PROCESSORS = (
 )
 
 CMS_TEMPLATES = [
-    ('home.html', 'Home page template'),
+
 ]
+
+CMS_TEMPLATES = (
+    ## Customize this
+    ('home.html', 'Home page template'),
+    ('fullwidth.html', 'Fullwidth'),
+    ('sidebar_left.html', 'Sidebar Left'),
+    ('sidebar_right.html', 'Sidebar Right')
+)
