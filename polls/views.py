@@ -5,19 +5,21 @@ from django.shortcuts import get_object_or_404, render
 from django.views import generic
 
 from .models import Choice, Poll
+from .models import HowTo, Step
 
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
-    context_object_name = 'latest_poll_list'
+    context_object_name = 'howto_list'
 
     def get_queryset(self):
-        return Poll.objects.all()[:5]
+        return HowTo.objects.order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):
-    model = Poll
+    model = HowTo
     template_name = 'polls/detail.html'
+    context_object_name = 'current_how_to'
 
 
 class ResultsView(generic.DetailView):

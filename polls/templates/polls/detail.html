@@ -1,16 +1,14 @@
-{% extends 'polls/base.html' %}
+{% extends 'base.html' %}
 
 {% block polls_content %}
-<h1>{{ poll.question }}</h1>
+  <h1>current_how_to.title: {{ current_how_to.title }}</h1>
+  <p>current_how_to.pub_date: {{ current_how_to.pub_date }}</p>
+  <p>current_how_to.intro: {{ current_how_to.intro }}</p>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-<form action="{% url 'polls:vote' poll.id %}" method="post">
-{% csrf_token %}
-{% for choice in poll.choice_set.all %}
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
-{% endfor %}
-<input type="submit" value="Vote" />
-</form>
+  {% for step in current_how_to.step_set.all %}
+    <div class="step">
+      <h1>step.title: {{ step.title }}</h1>
+      <p>step.markdown_content: {{ step.markdown_content }}</p>
+    </div>
+  {% endfor %}
 {% endblock %}
