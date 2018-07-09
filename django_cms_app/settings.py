@@ -25,7 +25,7 @@ SECRET_KEY = '5k*2g&6*v2ng+_azi8%g^w+kgjrvp2f&8czr2j2gqxtu-@so!&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0"]
 
 
 # Application definition
@@ -106,7 +106,7 @@ DATABASES = {
         'NAME': 'mydatabase',
         'USER': 'postgres',
         'PASSWORD': 'napier18',
-        'HOST': '127.0.0.1',
+        'HOST': '0.0.0.0',
         'PORT': '5432',
     }
 }
