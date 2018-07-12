@@ -17,10 +17,10 @@
         .nav li {
             display: inline;
             list-style-type: none;
-            padding-right: 20px;
+            padding: 10px 20px 10px 20px;
+            /* margin-bottom: -20px; */
         }
         .container {
-            width: 940px;
             margin: 0 auto
         }
         .content {
@@ -38,22 +38,32 @@
 
   </head>
   <body>
-
+    {# cms_toolbar must be at beginning of body #}
     {% cms_toolbar %}
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin: 46 0 0 0;">
       <div class="container">
-        <a class="navbar-brand" href="index.html">RedLab Napier</a>
+        <a class="navbar-brand" href="/">RedLab Napier</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="nav nav-item navbar-nav ml-auto">
-
-            {% show_menu 0 100 100 100 %}
-
-            <li class="nav-item dropdown">
+          {% show_menu 0 100 100 100 %}
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+            <li class="nav nav-pills dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Other Pages
               </a>
@@ -70,10 +80,9 @@
       </div>
     </nav>
 
+    {% show_breadcrumb %}
+
     <div class="container">
-      <ul class="nav">
-        {% show_menu 0 100 100 100 %}
-      </ul>
       {% block content %}{% endblock content %}
       {% static_placeholder 'footer' %}
     </div>

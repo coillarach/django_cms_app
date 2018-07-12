@@ -79,7 +79,7 @@ ROOT_URLCONF = 'django_cms_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['django_cms_app/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -169,14 +169,6 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-CMS_TEMPLATES = [
-
-]
-
 CMS_TEMPLATES = (
-    ## Customize this
-    ('home.html', 'Home page template'),
     ('fullwidth.html', 'Fullwidth'),
-    ('sidebar_left.html', 'Sidebar Left'),
-    ('sidebar_right.html', 'Sidebar Right')
 )
