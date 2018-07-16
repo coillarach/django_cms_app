@@ -17,9 +17,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import views
 
 urlpatterns = [
+    url(r'^login/', views.login, name='login'),
+    url(r'^logout/', views.logout, name='logout'),
     url(r'^admin/', admin.site.urls),
-    url(r'^polls/', include('polls.urls', namespace='polls')),
+    url(r'^doc_types/', include('doc_types.urls', namespace='doc_types')),
     url(r'^', include('cms.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

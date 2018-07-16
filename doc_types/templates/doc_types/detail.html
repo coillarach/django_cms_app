@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ current_how_to.title }}</h1>
+  <p>{{ current_how_to.pub_date }}</p>
+  <p>{{ current_how_to.intro }}</p>
+
+  {% for step in current_how_to.step_set.all %}
+    <div class="step">
+      <h1>{{ step.title }}</h1>
+      <p>{{ step.markdown_content }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}

@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('taggit', '0002_auto_20150616_2121'),
-        ('polls', '0001_initial'),
+        ('doc_types', '0001_initial'),
     ]
 
     operations = [
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=80)),
                 ('markdown_content', models.CharField(max_length=5000)),
-                ('how_to', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='polls.HowTo')),
+                ('how_to', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='doc_types.HowTo')),
             ],
         ),
     ]

@@ -5,7 +5,7 @@
 {% if howto_list %}
     <ul>
     {% for how_to in howto_list %}
-		<li><a href="{% url 'polls:detail' how_to.id %}">{{ how_to.title }}</a></li>
+		<li><a href="{% url 'doc_types:detail' how_to.id %}">{{ how_to.title }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

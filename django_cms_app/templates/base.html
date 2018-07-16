@@ -1,98 +1,117 @@
-{% load cms_tags menu_tags sekizai_tags %}
-<!doctype html>
-<html lang=en>
+{% load cms_tags menu_tags sekizai_tags staticfiles %}
+<!DOCTYPE html>
+<!-- change to {{ LANGUAGE_CODE }} -->
+<html lang="en">
+
   <head>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% page_attribute 'meta_description' %}">
+    <meta name="author" content="">
 
+    <title>{% page_attribute 'page_title' %} | RedLab</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <!-- BOOTSTRAP CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> -->
 
-    <!-- LOCAL CSS -->
-    <style type="text/css">
-        .nav {
-            padding-left: 0;
-        }
-        .nav li {
-            display: inline;
-            list-style-type: none;
-            padding: 10px 20px 10px 20px;
-            /* margin-bottom: -20px; */
-        }
-        .container {
-            margin: 0 auto
-        }
-        .content {
-            float: left;
-            width: 80%;
-        }
-        .sidebar {
-            float: left;
-            width: 20%;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link href="{% static 'css/modern-business.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     {% render_block "css" %}
-
-    <title>{% block title %}This is my new project home page{% endblock title %}</title>
-
   </head>
+
   <body>
-    {# cms_toolbar must be at beginning of body #}
+    <!-- cms_toolbar must be at beginning of body -->
     {% cms_toolbar %}
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin: 46 0 0 0;">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
-        <a class="navbar-brand" href="/">RedLab Napier</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          {% show_menu 0 100 100 100 %}
-          <ul class="nav nav-pills">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-            <li class="nav nav-pills dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Other Pages
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-                <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-                <a class="dropdown-item" href="faq.html">FAQ</a>
-                <a class="dropdown-item" href="404.html">404</a>
-                <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-              </div>
-            </li>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">RedLab Napier</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            {% show_menu 0 100 100 100 %}
           </ul>
         </div>
+        <!-- /.navbar-collapse -->
       </div>
+      <!-- /.container -->
     </nav>
 
-    {% show_breadcrumb %}
-
+    <!-- Page Content -->
     <div class="container">
-      {% block content %}{% endblock content %}
-      {% static_placeholder 'footer' %}
-    </div>
 
-    <!-- BOOTSTRAP JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+      <!-- Page Heading/Breadcrumbs -->
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">RedLab.
+            <small>The IoT Community</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/">Home</a>
+            </li>
+            <li class="active">
+              {% page_attribute 'page_title' %}
+            </li>
+          </ol>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <!-- Content Row -->
+      <div class="row">
+        <div class="col-lg-12">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+      <!-- Footer -->
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; RedLab {% now "Y" %} </p>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="{% static "js/jquery.js" %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
 
     <!-- LOCAL JS -->
     {% render_block "js" %}
   </body>
+
 </html>

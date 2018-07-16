@@ -25,7 +25,7 @@ SECRET_KEY = '5k*2g&6*v2ng+_azi8%g^w+kgjrvp2f&8czr2j2gqxtu-@so!&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0"]
+ALLOWED_HOSTS = ["0.0.0.0", "redlab-dev.napier.ac.uk", "146.176.251.49"]
 
 
 # Application definition
@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'djangocms_googlemap',
     'djangocms_snippet',
     'djangocms_style',
-    'polls',
+    'doc_types',
 ]
 
 MIDDLEWARE = [
@@ -154,6 +154,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "django_cms_app/static/"),
+]
+
 SITE_ID = 1
 
 MEDIA_URL = "/media/"
@@ -172,3 +178,5 @@ THUMBNAIL_PROCESSORS = (
 CMS_TEMPLATES = (
     ('fullwidth.html', 'Fullwidth'),
 )
+
+LOGIN_REDIRECT_URL = '/'

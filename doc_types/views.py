@@ -9,7 +9,7 @@ from .models import HowTo, Step
 
 
 class IndexView(generic.ListView):
-    template_name = 'polls/index.html'
+    template_name = 'doc_types/index.html'
     context_object_name = 'howto_list'
 
     def get_queryset(self):
@@ -18,13 +18,13 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = HowTo
-    template_name = 'polls/detail.html'
+    template_name = 'doc_types/detail.html'
     context_object_name = 'current_how_to'
 
 
 class ResultsView(generic.DetailView):
     model = Poll
-    template_name = 'polls/results.html'
+    template_name = 'doc_types/results.html'
 
 
 def vote(request, poll_id):
@@ -33,7 +33,7 @@ def vote(request, poll_id):
         selected_choice = p.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the poll voting form.
-        return render(request, 'polls/detail.html', {
+        return render(request, 'doc_types/detail.html', {
             'poll': p,
             'error_message': "You didn't select a choice.",
         })
@@ -43,4 +43,4 @@ def vote(request, poll_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
+        return HttpResponseRedirect(reverse('doc_types:results', args=(p.id,)))
