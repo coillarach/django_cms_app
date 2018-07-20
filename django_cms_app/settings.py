@@ -79,7 +79,7 @@ ROOT_URLCONF = 'django_cms_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['django_cms_app/templates'],
+        'DIRS': ['./templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -180,3 +180,7 @@ CMS_TEMPLATES = (
 )
 
 LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# LOGIN_URL = 'accounts/login'

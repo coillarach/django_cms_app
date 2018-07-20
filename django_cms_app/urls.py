@@ -17,11 +17,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.contrib.auth import views
+# from django.contrib.auth import views
+
+from . import views as django_cms_app_views
 
 urlpatterns = [
-    url(r'^login/', views.login, name='login'),
-    url(r'^logout/', views.logout, name='logout'),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/profile', django_cms_app_views.profile, name='profile'),
+    url(r'^signup/$', django_cms_app_views.signup, name='signup'),
     url(r'^admin/', admin.site.urls),
     url(r'^doc_types/', include('doc_types.urls', namespace='doc_types')),
     url(r'^', include('cms.urls')),

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% load static %}
+  <div class="col-sm">
+    <h1>We are glad you are here, {{ user.first_name }} {{ user.last_name }}!</h1>
+    <p>Username: {{ user.get_username }}</p>
+    <p>Email: {{ user.email }}</p>
+  </div>
+  <div class="col-sm">
+    <img id="profile_icon" src="{% static "django_cms_app/profile_icon.png" %}" alt="profile_icon">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Edit</a>
+  </div>
+{% endblock content %}

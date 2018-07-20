@@ -3,11 +3,19 @@
 {% block content %}
 <h1>How-tos</h1>
 {% if howto_list %}
-    <ul>
+
     {% for how_to in howto_list %}
-		<li><a href="{% url 'doc_types:detail' how_to.id %}">{{ how_to.title }}</a></li>
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header">Header</div>
+      <div class="card-body">
+        <h5 class="card-title">
+          <a href="{% url 'doc_types:detail' how_to.id %}">{{ how_to.title }}</a>
+        </h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
     {% endfor %}
-    </ul>
+
 {% else %}
     <p>No how_tos are available.</p>
 {% endif %}
