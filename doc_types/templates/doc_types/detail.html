@@ -7,7 +7,7 @@
 
   {% for step in current_how_to.step_set.all reversed %}
     <div class="step">
-      <div class="stepicon">{{ step.id }}</div>
+      <div class="stepicon">{{ forloop.counter }}</div>
       <h2>{{ step.title }}</h2>
       <p>{{ step.markdown_content }}</p>
     </div>
